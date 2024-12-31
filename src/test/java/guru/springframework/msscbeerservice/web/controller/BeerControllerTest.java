@@ -6,20 +6,27 @@ import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import guru.springframework.msscbeerservice.services.BeerService;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
+import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BeerController.class)
 class BeerControllerTest {
+	
+	@MockitoBean
+	BeerService beerService;
 	
 	@Autowired
 	MockMvc mockMvc;
@@ -35,10 +42,10 @@ class BeerControllerTest {
 
 	@Test
 	void testSaveBeer() throws Exception {
-		BeerDto beerDto = BeerDto.builder().build();
+		BeerDto beerDto = BeerDto.builder().beerName("Galaxy Cat").beerStyle(BeerStyleEnum.ALE).upc(370140000006L).build();
 		String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 		
-		mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/beer")
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/beer/")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(beerDtoJson))
 		.andExpect(status().isCreated());
