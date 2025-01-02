@@ -16,6 +16,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Version;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -43,6 +44,7 @@ public class Beer {
 	@UpdateTimestamp
 	private Timestamp lastModifiedDate;
 	
+	@NotNull
 	private String beerName;
 	
 	@Enumerated(EnumType.STRING)
