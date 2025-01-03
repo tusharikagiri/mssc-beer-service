@@ -18,6 +18,7 @@ import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import guru.springframework.msscbeerservice.bootstrap.BeerLoader;
 import guru.springframework.msscbeerservice.services.BeerService;
 import guru.springframework.msscbeerservice.web.mappers.BeerMapper;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
@@ -92,7 +93,7 @@ class BeerControllerTest {
 				.beerName("Test Beer")
 				.beerStyle(BeerStyleEnum.ALE)
 				.price(new BigDecimal("2.99"))
-				.upc(151515151515L)
+				.upc(BeerLoader.BEER_1_UPC)
 				.minOnHand(15)
 				.quantityToBrew(3500)
 				.build();
@@ -102,7 +103,7 @@ class BeerControllerTest {
 				.beerName("Test Beer")
 				.beerStyle(BeerStyleEnum.ALE)
 				.price(new BigDecimal("2.99"))
-				.upc(151515151515L)
+				.upc(BeerLoader.BEER_1_UPC)
 				.minOnHand(15)
 				.quantityToBrew(3500)
 				.build();
@@ -148,7 +149,7 @@ class BeerControllerTest {
 				.beerName("Test Beer")
 				.beerStyle(BeerStyleEnum.ALE)
 				.price(new BigDecimal("2.99"))
-				.upc(151515151515L)
+				.upc(BeerLoader.BEER_1_UPC)
 				.minOnHand(15)
 				.quantityToBrew(3500)
 				.build();
