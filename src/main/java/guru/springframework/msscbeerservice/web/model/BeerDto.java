@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -27,9 +30,11 @@ public class BeerDto {
 	private Integer version   ;
 
 	@Null
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX", shape = JsonFormat.Shape.STRING)
 	private OffsetDateTime createdDate;
 	
 	@Null
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX", shape = JsonFormat.Shape.STRING)
 	private OffsetDateTime lastModifiedDate;
 
 	@NotBlank
@@ -43,6 +48,7 @@ public class BeerDto {
 	@NotNull
 	private Long upc;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	@NotNull
 	@Positive
 	private BigDecimal price;
