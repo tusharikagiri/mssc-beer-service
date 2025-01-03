@@ -1,7 +1,6 @@
 package guru.springframework.msscbeerservice.web.mappers;
 
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Component;
 
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.web.model.BeerDto;

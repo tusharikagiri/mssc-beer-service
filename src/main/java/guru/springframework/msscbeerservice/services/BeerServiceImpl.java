@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.repositories.BeerRepository;
+import guru.springframework.msscbeerservice.web.controller.NotFoundException;
 import guru.springframework.msscbeerservice.web.mappers.BeerMapper;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
 import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
@@ -21,15 +22,15 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class BeerServiceImpl implements BeerService {
 
+	private final BeerMapper beerMapper;
+	private final BeerRepository beerRepository;
+
 	@Autowired
 	public BeerServiceImpl(BeerMapper beerMapper, BeerRepository beerRepository) {
 		this.beerMapper = beerMapper;
 		this.beerRepository = beerRepository;
 
 	}
-
-	private final BeerMapper beerMapper;
-	private final BeerRepository beerRepository;
 
 	@Override
 	public List<BeerDto> getAllBeers() {
@@ -43,7 +44,7 @@ public class BeerServiceImpl implements BeerService {
 	@Override
 	public Optional<BeerDto> getBeerById(UUID beerId) {
 		Optional<Beer> beer = beerRepository.findById(beerId);
-		if(beer.isEmpty()) {
+		if (beer.isEmpty()) {
 			return Optional.empty();
 		}
 		return Optional.of(beerMapper.beerToBeerDto(beer.get()));
@@ -53,20 +54,20 @@ public class BeerServiceImpl implements BeerService {
 	public BeerDto saveNewBeer(BeerDto beerDto) {
 		log.info("Save beer :" + beerDto.toString());
 		Beer beer = beerMapper.beerDtoToBeer(beerDto);
-		beerRepository.save(beer);
-		// log.info("beerDtoToBeer = " + beerMapper.beerDtoToBeer(beerDto).toString());
-		// return beerMapper.beerToBeerDto(beerMapper.beerDtoToBeer(beerDto));
-		return beerMapper.beerToBeerDto(beer);
+		return beerMapper.beerToBeerDto(beerRepository.save(beer));
 	}
 
 	@Override
-	public void updateBeer(UUID beerId, BeerDto beerDto) throws Exception {
+	public BeerDto updateBeer(UUID beerId, BeerDto beerDto) throws Exception {
 		log.info("Update beer with ID :" + beerId);
-		if(!getBeerById(beerId).isPresent()) {
-			throw new EntityNotFoundException("Beer with Id " + beerId +" is not found.");
-		}
-		saveNewBeer(beerDto);
-	
+		Beer beer = beerRepository.findById(beerId).orElseThrow(NotFoundException::new);
+		
+		beer.setBeerName(beerDto.getBeerName());
+		beer.setBeerStyle(beerDto.getBeerStyle());
+		beer.setPrice(beerDto.getPrice());
+		beer.setUpc(beerDto.getUpc());
+		
+		return beerMapper.beerToBeerDto(beerRepository.save(beer));
 	}
 
 	@Override

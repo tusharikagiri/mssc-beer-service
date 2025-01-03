@@ -12,7 +12,7 @@ public interface BeerService {
 
 	BeerDto saveNewBeer(BeerDto beerDto);
 
-	void updateBeer(UUID beerId, BeerDto beerDto) throws Exception;
+	BeerDto updateBeer(UUID beerId, BeerDto beerDto) throws Exception;
 
 	void deleteById(UUID beerId);
 
