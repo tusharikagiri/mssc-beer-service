@@ -1,5 +1,6 @@
 package guru.springframework.msscbeerservice.web.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -21,37 +22,39 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BeerDto {
-	
+public class BeerDto implements Serializable {
+
+	private static final long serialVersionUID = 7410835340114833163L;
+
 	@Null
 	private UUID id;
-	
+
 	@Null
-	private Integer version   ;
+	private Integer version;
 
 	@Null
 	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXZ", shape = JsonFormat.Shape.STRING)
 	private OffsetDateTime createdDate;
-	
+
 	@Null
 	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXZ", shape = JsonFormat.Shape.STRING)
 	private OffsetDateTime lastModifiedDate;
 
 	@NotBlank
-	@Size(min=3, max=100)
+	@Size(min = 3, max = 100)
 	private String beerName;
-	
+
 	@NotNull
 	private BeerStyleEnum beerStyle;
-	
+
 	@NotNull
 	private String upc;
-	
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	@NotNull
 	@Positive
 	private BigDecimal price;
-	
-	private Integer minOnHand;
+
+	private Integer quantityOnHand;
 	private Integer quantityToBrew;
 }

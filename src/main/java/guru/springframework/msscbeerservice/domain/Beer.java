@@ -6,8 +6,10 @@ import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.IdGeneratorType;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
+import org.springframework.data.domain.Persistable;
 
 import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
 import jakarta.persistence.Column;
@@ -28,32 +30,32 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 public class Beer {
-	
+
 	@Id
-    @UuidGenerator
+	@UuidGenerator
 	@Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
 	private UUID id;
-	
+
 	@Version
 	private Long version;
-	
+
 	@CreationTimestamp
 	@Column(updatable = false)
 	private Timestamp createdDate;
-	
+
 	@UpdateTimestamp
 	private Timestamp lastModifiedDate;
-	
+
 	@NotNull
 	private String beerName;
-	
+
 	@Enumerated(EnumType.STRING)
 	private BeerStyleEnum beerStyle;
-	
+
 	@Column(unique = true)
 	private String upc;
 	private BigDecimal price;
-	
-	private Integer minOnHand;
+
+	private Integer quantityOnHand;
 	private Integer quantityToBrew;
 }

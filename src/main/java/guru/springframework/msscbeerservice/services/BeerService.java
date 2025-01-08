@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.PageRequest;
+
 import guru.springframework.msscbeerservice.web.model.BeerDto;
+import guru.springframework.msscbeerservice.web.model.BeerPagedList;
+import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
 
 public interface BeerService {
 
@@ -18,4 +22,7 @@ public interface BeerService {
 
 	List<BeerDto> getAllBeers();
 
+	BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest, Boolean showOnHandInventory);
+	
+	BeerDto findBeerByUpc(String upc) throws Exception;
 }

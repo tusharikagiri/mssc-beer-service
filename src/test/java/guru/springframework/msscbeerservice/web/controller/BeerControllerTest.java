@@ -81,7 +81,7 @@ class BeerControllerTest {
 						fieldWithPath("beerStyle").description("Beer Style"),
 						fieldWithPath("upc").description("UPC of Beer"),
 						fieldWithPath("price").description("Price"),
-						fieldWithPath("minOnHand").description("Minimum Quantity on Hand"),
+						fieldWithPath("quantityOnHand").description("Minimum Quantity on Hand"),
 						fieldWithPath("quantityToBrew").description("Quantity on hand")
 						)));
 	}
@@ -94,7 +94,7 @@ class BeerControllerTest {
 				.beerStyle(BeerStyleEnum.ALE)
 				.price(new BigDecimal("2.99"))
 				.upc(BeerLoader.BEER_1_UPC)
-				.minOnHand(15)
+				.quantityOnHand(15)
 				.quantityToBrew(3500)
 				.build();
 		
@@ -104,7 +104,7 @@ class BeerControllerTest {
 				.beerStyle(BeerStyleEnum.ALE)
 				.price(new BigDecimal("2.99"))
 				.upc(BeerLoader.BEER_1_UPC)
-				.minOnHand(15)
+				.quantityOnHand(15)
 				.quantityToBrew(3500)
 				.build();
 		
@@ -129,7 +129,7 @@ class BeerControllerTest {
                         fields.withPath("upc").description("Beer UPC").attributes(),
                         fields.withPath("price").description("Beer Price"),
                         fields.withPath("quantityToBrew").ignored(),
-                        fields.withPath("minOnHand").ignored()
+                        fields.withPath("quantityOnHand").ignored()
                 )));
 	}
 
@@ -150,7 +150,6 @@ class BeerControllerTest {
 				.beerStyle(BeerStyleEnum.ALE)
 				.price(new BigDecimal("2.99"))
 				.upc(BeerLoader.BEER_1_UPC)
-				.minOnHand(15)
 				.quantityToBrew(3500)
 				.build();
 	}
