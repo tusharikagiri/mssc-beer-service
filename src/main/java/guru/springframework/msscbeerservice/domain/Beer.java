@@ -2,20 +2,22 @@ package guru.springframework.msscbeerservice.domain;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.IdGeneratorType;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.annotations.UuidGenerator;
-import org.springframework.data.domain.Persistable;
 
 import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Version;
 import jakarta.validation.constraints.NotNull;
@@ -31,9 +33,19 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Beer {
 
+	public Beer(@NotNull String beerName, BeerStyleEnum beerStyle, String upc, BigDecimal price,
+			Integer quantityToBrew) {
+		this.beerName = beerName;
+		this.beerStyle = beerStyle;
+		this.upc = upc;
+		this.price = price;
+		this.quantityToBrew = quantityToBrew;
+	}
+
 	@Id
-	@UuidGenerator
-	@Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
+    @GeneratedValue
+    @JdbcTypeCode(Types.VARCHAR)
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
 	private UUID id;
 
 	@Version
@@ -58,4 +70,28 @@ public class Beer {
 
 	private Integer quantityOnHand;
 	private Integer quantityToBrew;
+	
+	public UUID getId() {
+		return id;
+	}
+
+	public void setBeerName(String beerName2) {
+		beerName = beerName2;
+		
+	}
+
+	public void setBeerStyle(BeerStyleEnum beerStyle2) {
+		beerStyle = beerStyle2;
+		
+	}
+
+	public void setPrice(BigDecimal price2) {
+		price = price2;
+		
+	}
+
+	public void setUpc(String upc2) {
+		upc = upc2;
+		
+	}
 }
