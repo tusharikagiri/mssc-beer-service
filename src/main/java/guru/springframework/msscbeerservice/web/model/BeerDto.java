@@ -56,5 +56,4 @@ public class BeerDto implements Serializable {
 	private BigDecimal price;
 
 	private Integer quantityOnHand;
-	private Integer quantityToBrew;
 }

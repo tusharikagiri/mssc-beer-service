@@ -95,7 +95,6 @@ class BeerControllerTest {
 				.price(new BigDecimal("2.99"))
 				.upc(BeerLoader.BEER_1_UPC)
 				.quantityOnHand(15)
-				.quantityToBrew(3500)
 				.build();
 		
 		BeerDto savedBeerDto = BeerDto.builder()
@@ -105,7 +104,6 @@ class BeerControllerTest {
 				.price(new BigDecimal("2.99"))
 				.upc(BeerLoader.BEER_1_UPC)
 				.quantityOnHand(15)
-				.quantityToBrew(3500)
 				.build();
 		
 		String beerDtoJson = objectMapper.writeValueAsString(beerDto);
@@ -128,7 +126,7 @@ class BeerControllerTest {
                         fields.withPath("beerStyle").description("Style of Beer"),
                         fields.withPath("upc").description("Beer UPC").attributes(),
                         fields.withPath("price").description("Beer Price"),
-                        fields.withPath("quantityToBrew").ignored(),
+                        fields.withPath("minOnHand").ignored(),
                         fields.withPath("quantityOnHand").ignored()
                 )));
 	}
@@ -150,7 +148,6 @@ class BeerControllerTest {
 				.beerStyle(BeerStyleEnum.ALE)
 				.price(new BigDecimal("2.99"))
 				.upc(BeerLoader.BEER_1_UPC)
-				.quantityToBrew(3500)
 				.build();
 	}
 	

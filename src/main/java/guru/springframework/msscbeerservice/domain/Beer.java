@@ -39,7 +39,7 @@ public class Beer {
 		this.beerStyle = beerStyle;
 		this.upc = upc;
 		this.price = price;
-		this.quantityToBrew = quantityToBrew;
+		this.minOnHand = quantityToBrew;
 	}
 
 	@Id
@@ -68,30 +68,6 @@ public class Beer {
 	private String upc;
 	private BigDecimal price;
 
-	private Integer quantityOnHand;
 	private Integer quantityToBrew;
-	
-	public UUID getId() {
-		return id;
-	}
-
-	public void setBeerName(String beerName2) {
-		beerName = beerName2;
-		
-	}
-
-	public void setBeerStyle(BeerStyleEnum beerStyle2) {
-		beerStyle = beerStyle2;
-		
-	}
-
-	public void setPrice(BigDecimal price2) {
-		price = price2;
-		
-	}
-
-	public void setUpc(String upc2) {
-		upc = upc2;
-		
-	}
+	private Integer minOnHand;
 }
