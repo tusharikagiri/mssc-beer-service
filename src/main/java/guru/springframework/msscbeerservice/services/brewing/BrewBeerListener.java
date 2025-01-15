@@ -7,12 +7,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import guru.sfg.beer.common.events.BrewBeerEvent;
 import guru.sfg.beer.common.events.NewInventoryEvent;
+import guru.sfg.brewery.model.BeerDto;
 import guru.springframework.msscbeerservice.config.JmsConfig;
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.repositories.BeerRepository;
 import guru.springframework.msscbeerservice.web.controller.NotFoundException;
 import guru.springframework.msscbeerservice.web.mappers.BeerMapper;
-import guru.springframework.msscbeerservice.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

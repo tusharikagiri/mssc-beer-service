@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import guru.sfg.brewery.model.CustomerDto;
 import guru.springframework.msscbeerservice.services.CustomerService;
-import guru.springframework.msscbeerservice.web.model.CustomerDto;
 import jakarta.validation.Valid;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;

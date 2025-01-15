@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import guru.sfg.brewery.model.BeerStyleEnum;
 import guru.springframework.msscbeerservice.domain.Beer;
-import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
 
 public interface BeerRepository extends JpaRepository<Beer, UUID> {
 

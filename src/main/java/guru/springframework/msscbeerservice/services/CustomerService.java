@@ -2,7 +2,7 @@ package guru.springframework.msscbeerservice.services;
 
 import java.util.UUID;
 
-import guru.springframework.msscbeerservice.web.model.CustomerDto;
+import guru.sfg.brewery.model.CustomerDto;
 
 public interface CustomerService {
 	public CustomerDto getCustomerById(UUID customerId);

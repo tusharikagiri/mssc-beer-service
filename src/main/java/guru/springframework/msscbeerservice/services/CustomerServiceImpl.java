@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import guru.springframework.msscbeerservice.web.model.CustomerDto;
+import guru.sfg.brewery.model.CustomerDto;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
