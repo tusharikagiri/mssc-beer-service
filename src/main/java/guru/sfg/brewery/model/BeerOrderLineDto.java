@@ -19,6 +19,7 @@ package guru.sfg.brewery.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -35,26 +36,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @AllArgsConstructor
 public class BeerOrderLineDto {
 
+	@Default
 	@JsonProperty("id")
-    private UUID id = null;
+	private UUID id = null;
 
-    @JsonProperty("version")
-    private Integer version = null;
+	@Default
+	@JsonProperty("version")
+	private Integer version = null;
 
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
-    @JsonProperty("createdDate")
-    private OffsetDateTime createdDate = null;
+	@Default
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssZ", shape = JsonFormat.Shape.STRING)
+	@JsonProperty("createdDate")
+	private OffsetDateTime createdDate = null;
 
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
-    @JsonProperty("lastModifiedDate")
-    private OffsetDateTime lastModifiedDate = null;
+	@Default
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssZ", shape = JsonFormat.Shape.STRING)
+	@JsonProperty("lastModifiedDate")
+	private OffsetDateTime lastModifiedDate = null;
 
-    private String upc;
-    private String beerName;
-    private UUID beerId;
-    private Integer orderQuantity = 0;
-    private String beerStyle;
-    private BigDecimal price;
-    
-    public Integer quantityAllocated;
+	private String upc;
+	private String beerName;
+	private UUID beerId;
+	@Default
+	private Integer orderQuantity = 0;
+	private String beerStyle;
+	private BigDecimal price;
+
+	public Integer quantityAllocated;
 }

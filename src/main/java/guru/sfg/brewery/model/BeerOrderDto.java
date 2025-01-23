@@ -19,6 +19,7 @@ package guru.sfg.brewery.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -37,23 +38,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @AllArgsConstructor
 public class BeerOrderDto {
 
+	@Default
 	@JsonProperty("id")
-    private UUID id = null;
+	private UUID id = null;
 
-    @JsonProperty("version")
-    private Integer version = null;
+	@Default
+	@JsonProperty("version")
+	private Integer version = null;
 
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
-    @JsonProperty("createdDate")
-    private OffsetDateTime createdDate = null;
+	@Default
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssZ", shape = JsonFormat.Shape.STRING)
+	@JsonProperty("createdDate")
+	private OffsetDateTime createdDate = null;
 
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
-    @JsonProperty("lastModifiedDate")
-    private OffsetDateTime lastModifiedDate = null;
+	@Default
+	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssZ", shape = JsonFormat.Shape.STRING)
+	@JsonProperty("lastModifiedDate")
+	private OffsetDateTime lastModifiedDate = null;
 
-    private UUID customerId;
-    private String customerRef;
-    private List<BeerOrderLineDto> beerOrderLines;
-    private String orderStatus;
-    private String orderStatusCallbackUrl;
+	private String customerId;
+	private String customerRef;
+	private List<BeerOrderLineDto> beerOrderLines;
+	private String orderStatus;
+	private String orderStatusCallbackUrl;
 }
